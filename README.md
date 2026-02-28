@@ -23,12 +23,15 @@ Install dependencies:
 
 ## Usage/Instructions
 Hide a file:
-    py main.py hide <audio_file> <secret_file> <output_file>
+    python main.py hide <audio_file> <secret_file> <output_file>
 
 Extract a file:
-    py main.py extract <stego_audio_file> [output_dir]
+    python main.py extract <stego_audio_file> [output_dir]
 
 ## Supported Formats (.mp3 currently being worked on)
 - .wav (uncompressed)
 - .ogg (compressed)
 - .flac (compressed)
+
+## Additional Notes
+- Will print error if secret file is too large to be hid with current implementation.
