@@ -6,7 +6,7 @@ A Python program that hides files inside audio files using steganography. The cu
 - **WAV files (Uncompressed)** use LSB (Least Significant Bit) substitution on raw data
 - **OGG/FLAC files (Compressed-Lossless)** use LSB (Least Significant Bit) substitution with soundfile to read
 
-- **MP3,etc. files (Compressed-LossY)** use Echo Hiding (Not Currently Functional/Implemented)
+- **MP3,etc. files (Compressed-Lossy)** use Mutagen currently and will use Huffman coding in future implementation
 
 ## Files
 - `main.py` — Entry point / driver
@@ -19,7 +19,7 @@ A Python program that hides files inside audio files using steganography. The cu
 - soundfile
 
 Install dependencies:
-    pip install numpy soundfile
+    pip install numpy soundfile mutagen
 
 ## Usage/Instructions
 Hide a file:
@@ -32,6 +32,7 @@ Extract a file:
 - .wav (uncompressed)
 - .ogg (compressed)
 - .flac (compressed)
+- .mp3  (lossy)
 
 ## Additional Notes
 - Will print error if secret file is too large to be hid with current implementation.
