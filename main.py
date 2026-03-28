@@ -2,11 +2,13 @@ import sys
 import os
 from wav_stego import WavSteganography
 from compressed_stego import CompressedSteganography
+from lossy_stego import LossySteganography
 
 #Used to route to the correct handler based on file extension. This keeps the main logic clean and allows for easy extension in the future if new formats are added.
 WAV_EXTENSIONS = WavSteganography.SUPPORTED_EXTENSIONS
 COMPRESSED_EXTENSIONS = CompressedSteganography.SUPPORTED_EXTENSIONS
-ALL_SUPPORTED = WAV_EXTENSIONS | COMPRESSED_EXTENSIONS
+LOSSY_EXTENSIONS = LossySteganography.SUPPORTED_EXTENSIONS
+ALL_SUPPORTED = WAV_EXTENSIONS | COMPRESSED_EXTENSIONS | LOSSY_EXTENSIONS
 
 #Returns the appropriate handler class instance based on the audio file extension.
 def get_handler(audio_path: str):
@@ -15,6 +17,8 @@ def get_handler(audio_path: str):
         return WavSteganography(audio_path)
     if ext in COMPRESSED_EXTENSIONS:
         return CompressedSteganography(audio_path)
+    if ext in LOSSY_EXTENSIONS:
+        return LossySteganography(audio_path)
     raise ValueError(
         f"Unsupported file type '{ext}'. Supported: {', '.join(sorted(ALL_SUPPORTED))}"
     )
@@ -25,7 +29,6 @@ def print_usage():
     print("  Hide:    python main.py hide <audio_file> <secret_file> <output_file>")
     print("  Extract: python main.py extract <stego_audio_file> [output_dir]")
     print()
-    print("  Extract: python main.py extract <stego_audio_file> [output_dir]")
     print(f"Supported audio types: {', '.join(sorted(ALL_SUPPORTED))}")
 
 
