@@ -6,7 +6,7 @@ A Python program that hides files inside audio files using steganography. The cu
 - **WAV files (Uncompressed)** use LSB (Least Significant Bit) substitution on raw data
 - **OGG/FLAC files (Compressed-Lossless)** use LSB (Least Significant Bit) substitution with soundfile to read
 
-- **MP3,etc. files (Compressed-Lossy)** use Mutagen currently and will use Huffman coding in future implementation
+- **MP3,etc. files (Compressed-Lossy)** use Signal-level steganography with compression of unchecked header bits
 
 ## Files
 - `main.py` — Entry point / driver
